@@ -1,0 +1,67 @@
+<h2>Reactive Registration Form</h2>
+
+<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+
+  <label>Name:</label><br>
+
+  <input type="text" formControlName="name">
+
+  @if(registrationForm.get('name')?.invalid &&
+      registrationForm.get('name')?.touched){
+
+    <p style="color:red;">Name is required</p>
+
+  }
+
+  <br><br>
+
+  <label>Email:</label><br>
+
+  <input type="email" formControlName="email">
+
+  @if(registrationForm.get('email')?.invalid &&
+      registrationForm.get('email')?.touched){
+
+    <p style="color:red;">Enter a valid email</p>
+
+  }
+
+  <br><br>
+
+  <label>Course:</label><br>
+
+  <select formControlName="course">
+
+    <option value="">Select Course</option>
+    <option>Angular</option>
+    <option>React</option>
+    <option>Python</option>
+    <option>Machine Learning</option>
+
+  </select>
+
+  <br><br>
+
+  <button
+    type="submit"
+    [disabled]="registrationForm.invalid">
+
+    Submit
+
+  </button>
+
+</form>
+
+@if(submitted && registrationForm.valid){
+
+<hr>
+
+<h3>Submitted Data</h3>
+
+<p><strong>Name:</strong> {{ registrationForm.value.name }}</p>
+
+<p><strong>Email:</strong> {{ registrationForm.value.email }}</p>
+
+<p><strong>Course:</strong> {{ registrationForm.value.course }}</p>
+
+}

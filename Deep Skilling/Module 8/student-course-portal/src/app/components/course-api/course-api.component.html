@@ -1,0 +1,31 @@
+<h2>Users from API</h2>
+
+@if(errorMessage){
+
+<p style="color:red">
+  {{ errorMessage }}
+</p>
+
+}
+
+@else {
+
+<ul>
+
+@for(user of users; track user.id){
+
+<li>
+
+<strong>{{ user.name }}</strong>
+
+<br>
+
+{{ user.email }}
+
+</li>
+
+}
+
+</ul>
+
+}
